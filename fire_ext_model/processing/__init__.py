@@ -8,6 +8,7 @@ PACKAGE_DIR = Path(__file__).resolve().parents[1]
 CONFIG_FILE_PATH = PACKAGE_DIR / "config.yml"
 DATASET_DIR = PACKAGE_DIR / "dataset"
 
+
 def load() -> DataFrame:
     """Loads the training data file into a dataframe.
 

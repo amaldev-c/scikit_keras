@@ -2,13 +2,14 @@
 from pandas import DataFrame
 from fire_ext_model.processing.train import Train
 
+
 class Predict:
     """Wrapper for model inference"""
 
-    def __init__(self,trained_model:Train):
-        self.__model=trained_model
+    def __init__(self, trained_model: Train):
+        self.__model = trained_model
 
-    def predict(self,df:DataFrame) -> list:
+    def predict(self, df: DataFrame) -> list:
         """Makes model prediction for the given dataframe
 
         Args:

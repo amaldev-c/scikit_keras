@@ -17,6 +17,7 @@ if __name__ == "__main__":
     train.train()
     uvicorn.run(app, port=8002)
 
+
 @app.get("/")
 def root() -> str:
     """Placeholder for base url api
@@ -26,8 +27,9 @@ def root() -> str:
     """
     return "Hello World"
 
+
 @app.post("/predict")
-def predict(request:PredictRequest) -> list:
+def predict(request: PredictRequest) -> list:
     """API for model inference
 
     Args:
@@ -38,8 +40,8 @@ def predict(request:PredictRequest) -> list:
     """
     pred_obj = Predict(train)
     data = jsonable_encoder(request)
-    data['FUEL']=data['FUEL'].encode()
-    df_pred = DataFrame(data,[0])
+    data["FUEL"] = data["FUEL"].encode()
+    df_pred = DataFrame(data, [0])
     pred_array = pred_obj.predict(df_pred)
-    result = [1 if x >= 0.5 else 0 for x in pred_array[:,0]]
+    result = [1 if x >= 0.5 else 0 for x in pred_array[:, 0]]
     return result[0]

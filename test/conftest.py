@@ -1,6 +1,6 @@
+import pytest
 from fire_ext_model.processing import load
 from fire_ext_model.processing.train import Train
-import pytest
 
 
 @pytest.fixture(scope="package")

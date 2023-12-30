@@ -5,7 +5,7 @@ FROM python:3.9
 WORKDIR /scikit_keras
 
 # Copy the project files to base folder
-ADD /* ./
+ADD . ./
 
 # Install dependencies
 RUN pip install -r requirements/requirements.txt

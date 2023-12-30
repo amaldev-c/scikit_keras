@@ -14,6 +14,3 @@ jobs:
         run: pytest
       - name: lint
         run: pylint --disable=R0903 fire_ext_model
-      - name: format
-        run: black fire_ext_model test
-

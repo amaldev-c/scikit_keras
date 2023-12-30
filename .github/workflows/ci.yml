@@ -14,3 +14,21 @@ jobs:
         run: pytest
       - name: lint
         run: pylint --disable=R0903 fire_ext_model
+
+  docker:
+    needs: [build]
+    runs-on: ubuntu-latest
+    env:
+      DOCKER_USER: amaldevc
+      DOCKER_PASS_TOKEN: ${{ secrets.DOCKER_PASS_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v3
+        with:
+          python-version: 3.9
+      - name: docker login
+        run: docker login -u $DOCKER_USER -p $DOCKER_PASS_TOKEN
+      - name: docker build
+        run: docker build -t $DOCKER_USER/fire_ext_model:latest .
+      - name: docker push
+        run: docker push $DOCKER_USER/fire_ext_model:latest

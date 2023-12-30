@@ -1,3 +1,4 @@
+name: ci
 on: push
 jobs:
   build:
@@ -7,8 +8,12 @@ jobs:
       - uses: actions/setup-python@v3
         with: 
           python-version: 3.9
-      - run: pip install -r requirements/test_requirements.txt
-      - run: pytest
-      - run: pylint --disable=R0903 fire_ext_model
-      - run: black fire_ext_model test
+      - name: install dependencies
+        run: pip install -r requirements/test_requirements.txt
+      - name: test
+        run: pytest
+      - name: lint
+        run: pylint --disable=R0903 fire_ext_model
+      - name: format
+        run: black fire_ext_model test
 

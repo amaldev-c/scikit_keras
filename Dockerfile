@@ -1,5 +1,5 @@
 # Python base image
-FROM python:3.9
+FROM python:3.9-slim
 
 # Create base folder to copy the project to
 WORKDIR /scikit_keras

@@ -12,10 +12,10 @@ jobs:
       DOCKER_PASS_TOKEN: ${{ secrets.DOCKER_PASS_TOKEN }}
     steps:
       - name: docker login
-        run: docker login -u $DOCKER_USER -p $DOCKER_PASS_TOKEN
+        run: sudo docker login -u $DOCKER_USER -p $DOCKER_PASS_TOKEN
       - name: install app
-        run: docker pull $DOCKER_USER/fire_ext_model:latest
+        run: sudo docker pull $DOCKER_USER/fire_ext_model:latest
       - name: run app
-        run: docker run -d -p 8002:8002 --name fire_ext_model $DOCKER_USER/fire_ext_model
+        run: sudo docker run -d -p 8002:8002 --name fire_ext_model $DOCKER_USER/fire_ext_model
       - name: docker logout
-        run: docker logout
+        run: sudo docker logout

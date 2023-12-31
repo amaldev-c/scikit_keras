@@ -1,0 +1,16 @@
+name: cd
+on:
+  workflow_run:
+    workflows: ["ci"]
+    types:
+      - completed
+jobs:
+  deploy:
+    runs-on: self-hosted
+    env:
+      DOCKER_USER: amaldevc
+    steps:
+      - name: install app
+        run: docker pull $DOCKER_USER/fire_ext_model:latest
+      - name: run app
+        run: docker run -d -p 8002:8002 --name fire_ext_model $DOCKER_USER/fire_ext_model
